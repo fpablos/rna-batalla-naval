@@ -1,11 +1,8 @@
-from .Player import Player
 
-class RNNPlayer(Player):
+class RNNPlayer:
 
-    def __init__(self, env, simulations):
+    def __init__(self, env):
         self.env = env
-        # The number of moves to simulate
-        self.move_sim = simulations
 
     def run(self):
         return self.env.step()
