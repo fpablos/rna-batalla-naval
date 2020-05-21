@@ -1,10 +1,9 @@
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-from .Player import Player
 
 # Class for an AI based on monte-carlo simulation
-class MonteCarloPlayer(Player):
+class MonteCarloPlayer:
     def __init__(self, env, simulations):
         self.env = env
         # The number of moves to simulate
@@ -24,7 +23,6 @@ class MonteCarloPlayer(Player):
     def monte_carlo(self, state, out_path):
         simulations = []
 
-        #
         for i in range(self.move_sim):
             self.env.simulate_board.update(state)
             brd, intersect = self.env.simulate_board.simulate_ship()

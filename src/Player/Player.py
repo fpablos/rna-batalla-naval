@@ -1,13 +1,14 @@
 # A simple static factory method.
-from __future__ import generators
 from .MonteCarloPlayer import MonteCarloPlayer
 from .RNNPlayer import RNNPlayer
+from .HumanPlayer import HumanPlayer
 
 class Player(object):
-    def factory(self, type, params):
+    @classmethod
+    def factory(cls, type, game):
         if type == 'monte_carlo':
-            return MonteCarloPlayer(params)
+            return MonteCarloPlayer(game, 10000)
         if type == 'rnn':
-            return RNNPlayer(params)
-        assert 0, "Bad Player creation " + type
-    factory = staticmethod(factory)
+            return RNNPlayer(game)
+
+        return HumanPlayer(game)
