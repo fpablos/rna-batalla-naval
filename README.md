@@ -10,5 +10,5 @@ docker build --tag rna-batalla-naval .
 
 ## Corremos los comandos dentro del contenedor
 ```bash
-docker run -it --rm --name batalla-naval -v "$PWD":/app rna-batalla-naval python ./src/nombre_archivo.py
+docker run -it --rm --name batalla-naval -v "$PWD":/app rna-batalla-naval python ./src/main.py
 ```
