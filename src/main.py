@@ -1,6 +1,7 @@
 import argparse, traceback, sys
 from Game import Game
 from Player import Player
+from RNN import training, plot_training
 
 winner = {(True, False): 'Computer',
           (False, True): 'Player'}
@@ -29,6 +30,14 @@ def start(board_size, ships, player1, player2):
     print("="*10 + "GAME OVER" + "="*10)
     print(f"The winner is: {winner[(c_done, e_done)]}")
 
+def rnn_training(board_size, ships):
+    #print(board_size)
+    #print(ships)
+    training(board_size, ships)
+    plot_training()
+
+def rnn_plot_training():
+    plot_training()
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -37,8 +46,18 @@ if __name__ == '__main__':
     parser.add_argument('--ia_battle',  help='The final battle between monte carlo algorithm and RNA', default=False)
     parser.add_argument('--rnn',        help='Player vs RNA', default=False)
     parser.add_argument('--monte_carlo', help='Player vs RNA', default=True)
+    parser.add_argument('--training', help='Training the RNA', default=False)
+    parser.add_argument('--plot_training', help='Training the RNA', default=False)
 
     args = parser.parse_args()
+
+    if args.plot_training:
+        rnn_plot_training()
+        exit()
+
+    if args.training:
+        rnn_training(int(args.board_size), [int(x) for x in args.ship_sizes.split(',')])
+        exit()
 
     player1 = "monte_carlo"
     player2 = "human"
