@@ -1,2 +1,5 @@
 numpy
 matplotlib
+gym
+stable_baselines
+tensorflow==1.15
